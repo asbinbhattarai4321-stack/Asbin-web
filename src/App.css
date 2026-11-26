@@ -1,1 +1,181 @@
-dfs
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #121213;
+  color: #ffffff;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.app {
+  --tile-size: 62px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+}
+
+.title {
+  margin: 8px 0 0;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+/* ===== Message ===== */
+.toast-area {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.toast {
+  background-color: #ffffff;
+  color: #121213;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* ===== Board ===== */
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 24px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, var(--tile-size));
+  gap: 5px;
+}
+
+.tile {
+  width: var(--tile-size);
+  height: var(--tile-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #3a3a3c;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tile.filled {
+  border-color: #565758;
+}
+
+/* Colours decided by the game state */
+.tile.correct {
+  background-color: #538d4e;
+  border-color: #538d4e;
+}
+
+.tile.present {
+  background-color: #b59f3b;
+  border-color: #b59f3b;
+}
+
+.tile.absent {
+  background-color: #3a3a3c;
+  border-color: #3a3a3c;
+}
+
+/* ===== Keyboard ===== */
+.keyboard {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.key {
+  flex: 1;
+  height: 52px;
+  border: none;
+  border-radius: 4px;
+  background-color: #818384;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.key.wide {
+  flex: 1.5;
+}
+
+.key.correct {
+  background-color: #538d4e;
+}
+
+.key.present {
+  background-color: #b59f3b;
+}
+
+.key.absent {
+  background-color: #3a3a3c;
+}
+
+/* ===== Game over modal ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: #ffffff;
+  color: #121213;
+  padding: 24px 32px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal .solution {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 6px;
+  margin: 8px 0 16px;
+}
+
+.modal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #538d4e;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* ===== Small screens ===== */
+@media (max-width: 480px) {
+  .app {
+    --tile-size: 52px;
+  }
+
+  .key {
+    height: 46px;
+    font-size: 0.8rem;
+  }
+}
